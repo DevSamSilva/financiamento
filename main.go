@@ -2,30 +2,44 @@ package main
 
 import "fmt"
 
-func main() {
-
-	var salario float32
-	var financiemento float32
+func CapturaInform(sal, fin *float32) {
 
 	fmt.Println("Digite o seu salário: ")
-	fmt.Scanf("%f", &salario)
+	fmt.Scan(&*sal)
 
 	fmt.Println("Digite o seu financiamento: ")
-	fmt.Scanf("%f", &financiemento)
+	fmt.Scan(&*fin)
 
-	if financiemento <= (5 * salario) {
+}
+
+func AnaliseInform(finan, sala float32) {
+	if finan <= (5 * (sala)) {
 		fmt.Println("Financiamento Concedido")
 	} else {
 		var conjuge float32
-		fmt.Println("DIgite o salário do seu cônjuge: ")
+		fmt.Println("Digite o salário do seu cônjuge: ")
 		fmt.Scanf("%f", &conjuge)
-		if financiemento <= (5 * (salario + conjuge)) {
+		if finan <= (5 * (sala + conjuge)) {
 			fmt.Println("Financiamento Concedido")
 		} else {
 			fmt.Println("Financiamento Negado")
 		}
 	}
+}
 
+func Agradecimento() {
 	fmt.Println("Obrigado por nos consultar.")
+}
+
+func main() {
+
+	var salario float32
+	var financiamento float32
+
+	CapturaInform(&salario, &financiamento)
+
+	AnaliseInform(financiamento, salario)
+
+	Agradecimento()
 
 }
